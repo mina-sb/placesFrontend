@@ -1,0 +1,21 @@
+.nav-links{
+    display: flex;
+    list-style: none;
+    align-items: center;
+    margin-left: auto;
+    
+}
+.nav-links li{
+    margin: 0 0.5rem;
+}
+
+
+.nav-links{
+    display: none;
+  }
+
+@media (min-width: 768px) {
+    .nav-links{
+        display: flex;
+      }
+  }
