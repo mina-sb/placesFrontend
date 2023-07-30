@@ -4,26 +4,43 @@ import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import { Route, Routes } from "react-router-dom";
 import Auth from "./user/pages/Auth";
 import Users from "./user/pages/Users";
+import { useAuth } from "./shared/hooks/auth-hook";
+import { AuthContext } from "./shared/context/auth-context";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const { token, login, logout, userId } = useAuth();
 
-  const routs = isLoggedIn ? (
-    <Routes>
-      <Route path="/auth" element={<Users />} />
-      <Route path="/" element={<Auth />} />
-    </Routes>
-  ) : (
-    <Routes>
-      <Route path="/" element={<Users />} />
-      <Route path="/:uid/places" element={<Auth />} />
-    </Routes>
-  );
+  let routs;
+
+  if (token) {
+    routs = (
+      <Routes>
+        <Route path="/" element={<Users />} />
+        <Route path="/auth" element={<Auth />} />
+      </Routes>
+    );
+  } else {
+    routs = (
+      <Routes>
+        <Route path="/" element={<Users />} />
+        <Route path="/auth" element={<Auth />} />
+      </Routes>
+    );
+  }
+
   return (
-    <div className="App">
+    <AuthContext.Provider
+      value={{
+        isLoggedIn: !!token,
+        userId: userId,
+        token: token,
+        login: login,
+        logout: logout,
+      }}
+    >
       <MainNavigation />
       <main>{routs}</main>
-    </div>
+    </AuthContext.Provider>
   );
 }
 
