@@ -8,6 +8,7 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import { AuthContext } from "../../shared/context/auth-context";
 import { useNavigate } from "react-router-dom";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
+import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 
 const Auth = () => {
   const [isLoginMode, setIsLoginMode] = useState(true);
@@ -77,60 +78,63 @@ const Auth = () => {
   };
 
   return (
-    <div className="auth-container">
-      <img className="auth-img" src={img} />
-      {isLoading && <LoadingSpinner />}
-      <h2 className="auth-container-title">
-        {isLoginMode ? "Login" : "Sign Up"}
-      </h2>
-      <form onSubmit={authSubmitHandler}>
-        {!isLoginMode ? (
+    <React.Fragment>
+      <ErrorModal error={error} onClear={clearError} />
+      <div className="auth-container">
+        <img className="auth-img" src={img} />
+        {isLoading && <LoadingSpinner />}
+        <h2 className="auth-container-title">
+          {isLoginMode ? "Login" : "Sign Up"}
+        </h2>
+        <form onSubmit={authSubmitHandler}>
+          {!isLoginMode ? (
+            <Input
+              type="text"
+              id="name"
+              placeholder="Name"
+              onInput={inputHandler}
+              validators={["REQUIRED", "MIN(4)"]}
+            />
+          ) : (
+            ""
+          )}
           <Input
             type="text"
-            id="name"
-            placeholder="Name"
+            id="email"
+            placeholder="Email"
             onInput={inputHandler}
-            validators={["REQUIRED", "MIN(4)"]}
+            validators={["REQUIRED", "MIN(5)"]}
           />
-        ) : (
-          ""
-        )}
-        <Input
-          type="text"
-          id="email"
-          placeholder="Email"
-          onInput={inputHandler}
-          validators={["REQUIRED", "MIN(5)"]}
-        />
-        <Input
-          type="text"
-          id="password"
-          placeholder="Password"
-          onInput={inputHandler}
-          validators={["REQUIRED"]}
-        />
+          <Input
+            type="text"
+            id="password"
+            placeholder="Password"
+            onInput={inputHandler}
+            validators={["REQUIRED"]}
+          />
+          <Button
+            type="submit"
+            class="full-width-button main-color-button"
+            disabled={!formState.isValid}
+          >
+            {isLoginMode ? "Login" : "Join Now"}
+          </Button>
+        </form>
         <Button
-          type="submit"
-          class="full-width-button main-color-button"
-          disabled={!formState.isValid}
+          class="bg-color-button full-width-button"
+          onClick={switchModeHandler}
         >
-          {isLoginMode ? "Login" : "Join Now"}
+          <p className="link-to-signup-p">
+            {isLoginMode
+              ? "Don’t have an account?"
+              : "Do you have an account already?"}
+            <span className="main-color-text">
+              {isLoginMode ? "Register now" : "Login now"}
+            </span>
+          </p>
         </Button>
-      </form>
-      <Button
-        class="bg-color-button full-width-button"
-        onClick={switchModeHandler}
-      >
-        <p className="link-to-signup-p">
-          {isLoginMode
-            ? "Don’t have an account?"
-            : "Do you have an account already?"}
-          <span className="main-color-text">
-            {isLoginMode ? "Register now" : "Login now"}
-          </span>
-        </p>
-      </Button>
-    </div>
+      </div>
+    </React.Fragment>
   );
 };
 
