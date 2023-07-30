@@ -1,58 +1,58 @@
-.button{
-    font: inherit;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    padding: 0.4rem 0.6rem;
-    outline: none;
-    font-weight: 600;
-    transition: all ease 0.55s;
-    margin: 6px 0;
+.button {
+  font: inherit;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.4rem 0.6rem;
+  outline: none;
+  font-weight: 600;
+  transition: all ease 0.55s;
+  margin: 6px 0;
 }
 
-.main-color-button{
-    border: 2px solid var(--main-color);
-    background: var(--main-color);
-    color: var(--bg-color);
+.main-color-button {
+  border: 2px solid var(--main-color);
+  background: var(--main-color);
+  color: var(--bg-color);
 }
-.main-color-button:hover{
-    border: 2px solid var(--third-color);
-    background: var(--third-color);
-    color: var(--bg-color);
+.main-color-button:hover {
+  border: 2px solid var(--third-color);
+  background: var(--third-color);
+  color: var(--bg-color);
 }
-.bg-color-button{
-    border: 2px solid var(--bg-color);
-    background: var(--bg-color);
-    color: var(--text-color);
+.bg-color-button {
+  border: 2px solid var(--bg-color);
+  background: var(--bg-color);
+  color: var(--text-color);
 }
-.main-color-button:hover{
-    border: 2px solid var(--third-color);
-    background: var(--third-color);
-    color: var(--bg-color);
+.main-color-button:hover {
+  border: 2px solid var(--third-color);
+  background: var(--third-color);
+  color: var(--bg-color);
 }
-.outline-button{
-    border: 2px solid var(--main-color);
-    background: transparent;
-    color: var(--main-color);
+.outline-button {
+  border: 2px solid var(--main-color);
+  background: transparent;
+  color: var(--main-color);
 }
-.outline-button:hover{
-    border: 2px solid var(--main-color);
-    background: var(--main-color);
-    color: var(--second-color);
+.outline-button:hover {
+  border: 2px solid var(--main-color);
+  background: var(--main-color);
+  color: var(--second-color);
 }
-.full-width-button{
-    width: 100%;
+.full-width-button {
+  width: 100%;
 }
 
-.disabled{
-    border: 2px solid var(--bg-color);
-    background: var(--bg-color);
-    color: #cacaca;
-    cursor:default;
+.disabled {
+  border: 2px solid var(--bg-color);
+  background: var(--bg-color);
+  color: #cacaca;
+  cursor: default;
 }
-.disabled:hover{
-    border: 2px solid var(--bg-color);
-    background: var(--bg-color);
-    color: #cacaca;
+.disabled:hover {
+  border: 2px solid var(--bg-color);
+  background: var(--bg-color);
+  color: #cacaca;
 }

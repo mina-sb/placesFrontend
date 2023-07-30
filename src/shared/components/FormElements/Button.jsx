@@ -1,5 +1,6 @@
 import React from "react";
 import "./Button.css";
+import { Link } from "react-router-dom";
 
 const Button = (props) => {
   if (props.href) {
@@ -10,6 +11,16 @@ const Button = (props) => {
     );
   }
   if (props.to) {
+    return (
+      <Link
+        to={props.to}
+        exact={props.exact}
+        className={`button ${props.class}`}
+        onClick={props.onClick}
+      >
+        {props.children}
+      </Link>
+    );
   }
   return (
     <button
