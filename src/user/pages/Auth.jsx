@@ -7,6 +7,7 @@ import { useForm } from "../../shared/hooks/form-hook";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { AuthContext } from "../../shared/context/auth-context";
 import { useNavigate } from "react-router-dom";
+import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 
 const Auth = () => {
   const [isLoginMode, setIsLoginMode] = useState(true);
@@ -78,6 +79,7 @@ const Auth = () => {
   return (
     <div className="auth-container">
       <img className="auth-img" src={img} />
+      {isLoading && <LoadingSpinner />}
       <h2 className="auth-container-title">
         {isLoginMode ? "Login" : "Sign Up"}
       </h2>
