@@ -1,12 +1,18 @@
-import React, { useCallback, useEffect, useReducer, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Auth.css";
 import Input from "../../shared/components/FormElements/Input";
 import Button from "../../shared/components/FormElements/Button";
 import img from "../../shared/assets/6369737.png";
 import { useForm } from "../../shared/hooks/form-hook";
+import { useHttpClient } from "../../shared/hooks/http-hook";
+import { AuthContext } from "../../shared/context/auth-context";
+import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
   const [isLoginMode, setIsLoginMode] = useState(true);
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const auth = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -23,7 +29,6 @@ const Auth = () => {
   );
 
   const switchModeHandler = () => {
-    console.log(formState);
     if (!isLoginMode) {
       setFormData(
         {
@@ -46,9 +51,28 @@ const Auth = () => {
     }
     setIsLoginMode((prevMode) => !prevMode);
   };
-  const submut = (e) => {
+  const authSubmitHandler = async (e) => {
     e.preventDefault();
-    console.log(formState);
+    if (isLoginMode) {
+      try {
+        const responseData = await sendRequest(
+          "http://localhost:5000/api/users/login",
+          "POST",
+          JSON.stringify({
+            email: formState.inputs.email.value,
+            password: formState.inputs.password.value,
+          }),
+          {
+            "Content-Type": "application/json",
+          }
+        );
+        auth.login(responseData.userId, responseData.token);
+        navigate("/");
+      } catch (err) {}
+    } else {
+      try {
+      } catch (err) {}
+    }
   };
 
   return (
@@ -57,14 +81,14 @@ const Auth = () => {
       <h2 className="auth-container-title">
         {isLoginMode ? "Login" : "Sign Up"}
       </h2>
-      <form onSubmit={submut}>
+      <form onSubmit={authSubmitHandler}>
         {!isLoginMode ? (
           <Input
             type="text"
             id="name"
             placeholder="Name"
             onInput={inputHandler}
-            validators={["REQUIRED", "MIN(5)"]}
+            validators={["REQUIRED", "MIN(4)"]}
           />
         ) : (
           ""
@@ -90,20 +114,20 @@ const Auth = () => {
         >
           {isLoginMode ? "Login" : "Join Now"}
         </Button>
-        <Button
-          class="bg-color-button full-width-button"
-          onClick={switchModeHandler}
-        >
-          <p className="link-to-signup-p">
-            {isLoginMode
-              ? "Don’t have an account?"
-              : "Do you have an account already?"}
-            <span className="main-color-text">
-              {isLoginMode ? "Register now" : "Login now"}
-            </span>
-          </p>
-        </Button>
       </form>
+      <Button
+        class="bg-color-button full-width-button"
+        onClick={switchModeHandler}
+      >
+        <p className="link-to-signup-p">
+          {isLoginMode
+            ? "Don’t have an account?"
+            : "Do you have an account already?"}
+          <span className="main-color-text">
+            {isLoginMode ? "Register now" : "Login now"}
+          </span>
+        </p>
+      </Button>
     </div>
   );
 };
