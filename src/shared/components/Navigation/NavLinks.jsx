@@ -4,7 +4,6 @@ import Button from "../FormElements/Button";
 
 const NavLinks = () => {
   const [activeTab, setActiveTab] = useState("users");
-  console.log(activeTab);
 
   return (
     <ul class="nav-links">
