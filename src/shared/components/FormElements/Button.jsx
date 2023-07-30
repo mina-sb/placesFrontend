@@ -11,7 +11,15 @@ const Button = (props) => {
   }
   if (props.to) {
   }
-  return <button className={`button ${props.class}`}>{props.children}</button>;
+  return (
+    <button
+      className={`button ${props.class} ${props.disabled ? "disabled" : ""}`}
+      disabled={props.disabled}
+      onClick={props.onClick}
+    >
+      {props.children}
+    </button>
+  );
 };
 
 export default Button;

@@ -11,7 +11,7 @@ const NavLinks = () => {
         </Button>
       </li>
       <li>
-        <Button href="link">Authentication</Button>
+        <Button class="main-color-button">Authentication</Button>
       </li>
     </ul>
   );

@@ -44,3 +44,15 @@
 .full-width-button{
     width: 100%;
 }
+
+.disabled{
+    border: 2px solid var(--bg-color);
+    background: var(--bg-color);
+    color: #cacaca;
+    cursor:default;
+}
+.disabled:hover{
+    border: 2px solid var(--bg-color);
+    background: var(--bg-color);
+    color: #cacaca;
+}
