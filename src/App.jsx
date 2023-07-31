@@ -8,28 +8,28 @@ import { useAuth } from "./shared/hooks/auth-hook";
 import { AuthContext } from "./shared/context/auth-context";
 import UserPlaces from "./place/pages/UserPlaces";
 import NewPlace from "./place/pages/NewPlace";
+import UpdatePlace from "./place/pages/UpdatePlace";
 
 function App() {
   const { token, login, logout, userId } = useAuth();
 
-  let routs;
+  let routes;
 
   if (token) {
-    routs = (
+    routes = (
       <Routes>
         <Route path="/" element={<Users />} />
-        <Route path="/auth" element={<Auth />} />
-        <Route path="/:userId/places" element={<UserPlaces />} />
         <Route path="/places/new" element={<NewPlace />} />
+        <Route path="/:userId/places" element={<UserPlaces />} />
+        <Route path="/places/:placeId" element={<UpdatePlace />} />
       </Routes>
     );
   } else {
-    routs = (
+    routes = (
       <Routes>
         <Route path="/" element={<Users />} />
-        <Route path="/auth" element={<Auth />} />
         <Route path="/:userId/places" element={<UserPlaces />} />
-        <Route path="/places/new" element={<NewPlace />} />
+        <Route path="/auth" element={<Auth />} />]{" "}
       </Routes>
     );
   }
@@ -45,7 +45,7 @@ function App() {
       }}
     >
       <MainNavigation />
-      <main>{routs}</main>
+      <main>{routes}</main>
     </AuthContext.Provider>
   );
 }
