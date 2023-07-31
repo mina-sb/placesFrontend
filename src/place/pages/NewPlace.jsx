@@ -9,7 +9,7 @@ import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import { useForm } from "../../shared/hooks/form-hook";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { AuthContext } from "../../shared/context/auth-context";
-import "./NewPlace.css";
+import "./PlaceForm.css";
 import ImageUpload from "../../shared/components/FormElements/ImageUpload";
 
 const NewPlace = () => {
