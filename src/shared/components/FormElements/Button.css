@@ -56,3 +56,8 @@
   background: var(--bg-color);
   color: #cacaca;
 }
+
+.btn-xs {
+  font-size: 0.8em;
+  font-weight: 300;
+}
