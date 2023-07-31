@@ -64,10 +64,10 @@ const PlaceItem = (props) => {
         footerClass="place-item__modal-actions"
         footer={
           <React.Fragment>
-            <Button inverse onClick={cancelDeleteHandler}>
+            <Button class="outline-button mr" onClick={cancelDeleteHandler}>
               CANCEL
             </Button>
-            <Button danger onClick={confirmDeleteHandler}>
+            <Button class="main-color-button" onClick={confirmDeleteHandler}>
               DELETE
             </Button>
           </React.Fragment>
@@ -93,15 +93,17 @@ const PlaceItem = (props) => {
             <p>{props.description}</p>
           </div>
           <div className="place-item__actions">
-            <Button inverse onClick={openMapHandler}>
+            <Button class="third-color-button" onClick={openMapHandler}>
               VIEW ON MAP
             </Button>
             {auth.userId === props.creatorId && (
-              <Button to={`/places/${props.id}`}>EDIT</Button>
+              <Button class="third-color-button" to={`/places/${props.id}`}>
+                EDIT
+              </Button>
             )}
 
             {auth.userId === props.creatorId && (
-              <Button danger onClick={showDeleteWarningHandler}>
+              <Button class="outline-button" onClick={showDeleteWarningHandler}>
                 DELETE
               </Button>
             )}
