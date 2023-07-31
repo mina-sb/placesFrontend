@@ -1,0 +1,15 @@
+.place-form {
+  position: relative;
+  list-style: none;
+  margin: 4rem auto;
+  padding: 1rem;
+  width: 90%;
+  max-width: 40rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 6px;
+  background: white;
+}
+.place-form h3 {
+  font-size: 1.5em;
+  margin: 1rem 0;
+}
