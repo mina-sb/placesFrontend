@@ -82,7 +82,7 @@ const Auth = () => {
       <ErrorModal error={error} onClear={clearError} />
       <div className="auth-container">
         <img className="auth-img" src={img} />
-        {isLoading && <LoadingSpinner />}
+        {isLoading && <LoadingSpinner asOverlay />}
         <h2 className="auth-container-title">
           {isLoginMode ? "Login" : "Sign Up"}
         </h2>
