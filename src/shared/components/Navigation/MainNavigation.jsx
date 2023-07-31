@@ -3,6 +3,8 @@ import MainHeader from "./MainHeader";
 
 import "./MainNavigation.css";
 import NavLinks from "./NavLinks";
+import SideDrawer from "./SideDrawer";
+import Backdrop from "../UIElements/Backdrop";
 
 const MainNavigation = (props) => {
   const [isNightMode, setIsNightMode] = useState(false);
@@ -16,17 +18,41 @@ const MainNavigation = (props) => {
     }
   };
 
+  const [drawerIsOpen, setDrawerIsOpen] = useState(false);
+
+  const openDrawerHandler = () => {
+    setDrawerIsOpen(true);
+  };
+
+  const closeDrawerHandler = () => {
+    setDrawerIsOpen(false);
+  };
+
   return (
-    <MainHeader>
-      <nav className="main-navigation">
-        <a class="logo">Places</a>
+    <React.Fragment>
+      {drawerIsOpen && <Backdrop onClick={closeDrawerHandler} />}
+      <SideDrawer show={drawerIsOpen} onClick={closeDrawerHandler}>
         <NavLinks />
-        <div className="navigation-buttons">
-          <i class="bx bx-menu navigation-button"></i>
-          <i class="bx bx-moon navigation-button" onClick={changeThemeMode}></i>
-        </div>
-      </nav>
-    </MainHeader>
+      </SideDrawer>
+      <MainHeader>
+        <nav className="main-navigation">
+          <a class="logo">Places</a>
+          <div className="navlinks-container">
+            <NavLinks />
+          </div>
+          <div className="navigation-buttons">
+            <i
+              class="bx bx-menu navigation-button"
+              onClick={openDrawerHandler}
+            ></i>
+            <i
+              class="bx bx-moon navigation-button"
+              onClick={changeThemeMode}
+            ></i>
+          </div>
+        </nav>
+      </MainHeader>
+    </React.Fragment>
   );
 };
 

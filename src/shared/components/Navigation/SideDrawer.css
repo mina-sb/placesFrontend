@@ -1,0 +1,36 @@
+.side-drawer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  height: 100vh;
+  width: 12rem;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  transition: all 0.7s ease-in-out;
+  padding: 1rem;
+}
+.open {
+  transform: translateX(0rem);
+}
+.close {
+  transform: translateX(-12rem);
+}
+@media (min-width: 350px) {
+  .side-drawer {
+    width: 13rem;
+  }
+  .close {
+    transform: translateX(-13rem);
+  }
+}
+
+@media (min-width: 430px) {
+  .side-drawer {
+    width: 18rem;
+    padding: 2rem;
+  }
+  .close {
+    transform: translateX(-18rem);
+  }
+}
