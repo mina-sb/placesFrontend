@@ -49,14 +49,27 @@ const Input = (props) => {
         type="text"
         id={props.id}
         className={`input ${
-          inputState.isTouched && !inputState.isValid ? "input-required" : ""
+          inputState.isTouched && !inputState.isValid && props.validators.length
+            ? "input-required"
+            : ""
         }`}
         placeholder={props.placeholder}
         onChange={changeHandler}
         onBlur={touchHandler}
       />
     ) : (
-      <textarea rows={props.rows} id={props.id} className="input" />
+      <textarea
+        rows={props.rows}
+        id={props.id}
+        className={`input ${
+          inputState.isTouched && !inputState.isValid && props.validators.length
+            ? "input-required"
+            : ""
+        }`}
+        placeholder={props.placeholder}
+        onChange={changeHandler}
+        onBlur={touchHandler}
+      />
     );
 
   return input;
