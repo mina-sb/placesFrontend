@@ -5,3 +5,10 @@
   width: 90%;
   max-width: 40rem;
 }
+.place-list h2 {
+  margin-top: 1rem;
+  font-size: 1.4em;
+}
+.mt {
+  margin-top: 3rem;
+}
