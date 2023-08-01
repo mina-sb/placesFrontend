@@ -1,0 +1,19 @@
+.dropdown {
+  position: absolute;
+  top: 3.5rem;
+  left: 0;
+  right: 0;
+  margin-right: 0.5rem;
+  z-index: 1000;
+  padding-left: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 5px;
+  background: var(--second-color);
+  transition: all 0.5s;
+}
+.dropdown-list {
+  list-style: none;
+}
+.dropdown-list li {
+  padding: 0.5rem;
+}

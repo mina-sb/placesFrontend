@@ -1,15 +1,16 @@
 import React, { useContext, useState } from "react";
 import MainHeader from "./MainHeader";
-
 import "./MainNavigation.css";
 import NavLinks from "./NavLinks";
 import SideDrawer from "./SideDrawer";
 import Backdrop from "../UIElements/Backdrop";
 import { AuthContext } from "../../context/auth-context";
+import DropDown from "../UIElements/DropDown";
 
 const MainNavigation = (props) => {
   const [isNightMode, setIsNightMode] = useState(false);
   const user = useContext(AuthContext);
+
   const changeThemeMode = () => {
     if (!isNightMode) {
       document.body.classList.add("night");
@@ -21,11 +22,9 @@ const MainNavigation = (props) => {
   };
 
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
-
   const openDrawerHandler = () => {
     setDrawerIsOpen(true);
   };
-
   const closeDrawerHandler = () => {
     setDrawerIsOpen(false);
   };
@@ -54,8 +53,10 @@ const MainNavigation = (props) => {
             ></i>
             <img
               className="nav-profileImg"
+              onClick={props.setOpen}
               src={`http://localhost:5000/${user.image}`}
             />
+            <DropDown show={props.showMenu} />
           </div>
         </nav>
       </MainHeader>
