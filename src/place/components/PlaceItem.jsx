@@ -93,17 +93,23 @@ const PlaceItem = (props) => {
             <p>{props.description}</p>
           </div>
           <div className="place-item__actions">
-            <Button class="third-color-button" onClick={openMapHandler}>
+            <Button class="third-color-button btn-xs" onClick={openMapHandler}>
               VIEW ON MAP
             </Button>
             {auth.userId === props.creatorId && (
-              <Button class="third-color-button" to={`/places/${props.id}`}>
+              <Button
+                class="third-color-button btn-xs"
+                to={`/places/${props.id}`}
+              >
                 EDIT
               </Button>
             )}
 
             {auth.userId === props.creatorId && (
-              <Button class="outline-button" onClick={showDeleteWarningHandler}>
+              <Button
+                class="outline-button btn-xs"
+                onClick={showDeleteWarningHandler}
+              >
                 DELETE
               </Button>
             )}

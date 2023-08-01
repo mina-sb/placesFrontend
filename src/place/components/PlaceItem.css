@@ -1,5 +1,6 @@
 .place-item {
   margin: 1rem 0;
+  flex: 0 0 100%;
 }
 
 .place-item__content {
@@ -15,22 +16,28 @@
   width: 100%;
   height: 12.5rem;
   margin-right: 1.5rem;
+  overflow: hidden;
 }
 
 .place-item__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: all 0.6s;
+}
+.place-item__image img:hover {
+  transform: scale(1.1);
 }
 
 .place-item__info h2,
 .place-item__info h3,
 .place-item__info p {
   margin: 0 0 0.5rem 0;
+  color: var(--text-color);
 }
 
 .place-item__actions {
-  padding: 1rem;
+  padding: 0.5rem;
   text-align: center;
   border-top: 1px solid #ccc;
 }
@@ -45,7 +52,7 @@
 
 .place-item__actions button,
 .place-item__actions a {
-  margin: 0.5rem;
+  margin: 0.5rem 0.2rem;
 }
 
 .map-container {
@@ -55,8 +62,17 @@
 .mr {
   margin-right: 0.5rem;
 }
-@media (min-width: 768px) {
-  .place-item__image {
-    height: 20rem;
+@media (min-width: 600px) {
+  .place-item {
+    flex: 0 0 45%;
+  }
+}
+
+@media (min-width: 780px) {
+  .place-item {
+    flex: 0 0 31%;
+  }
+  .place-item__actions {
+    padding: 0.5rem;
   }
 }

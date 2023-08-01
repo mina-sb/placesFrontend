@@ -6,4 +6,9 @@
   padding: 1rem;
   overflow: hidden;
   background: var(--second-color);
+  transition: all 0.5s;
+}
+.card:hover {
+  box-shadow: 6px 6px 19px rgba(0, 0, 0, 0.26);
+  cursor: pointer;
 }
