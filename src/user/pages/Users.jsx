@@ -24,7 +24,11 @@ const Users = () => {
   return (
     <React.Fragment>
       <ErrorModal show={error} onClear={clearError} />
-      {isLoading && <LoadingSpinner />}
+      {isLoading && (
+        <div className="center">
+          <LoadingSpinner />
+        </div>
+      )}
       {!isLoading && loadedUsers && <UserList users={loadedUsers} />}
     </React.Fragment>
   );
