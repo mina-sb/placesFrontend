@@ -9,6 +9,8 @@ import { AuthContext } from "./shared/context/auth-context";
 import UserPlaces from "./place/pages/UserPlaces";
 import NewPlace from "./place/pages/NewPlace";
 import UpdatePlace from "./place/pages/UpdatePlace";
+import Profile from "./user/components/ProfileHeader";
+import UserProfile from "./user/pages/UserProfile";
 
 function App() {
   const { token, login, logout, userId, name } = useAuth();
@@ -20,7 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Users />} />
         <Route path="/places/new" element={<NewPlace />} />
-        <Route path="/:userId/places" element={<UserPlaces />} />
+        <Route path="/:userId/places" element={<UserProfile />} />
         <Route path="/places/:placeId" element={<UpdatePlace />} />
       </Routes>
     );
@@ -28,7 +30,7 @@ function App() {
     routes = (
       <Routes>
         <Route path="/" element={<Users />} />
-        <Route path="/:userId/places" element={<UserPlaces />} />
+        <Route path="/:userId/places" element={<UserProfile />} />
         <Route path="/auth" element={<Auth />} />]{" "}
       </Routes>
     );

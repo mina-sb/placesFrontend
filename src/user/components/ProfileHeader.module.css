@@ -1,0 +1,63 @@
+.header {
+  width: 100%;
+  background-image: url("../../shared/assets/layered-waves-haikei.svg");
+  min-height: 5rem;
+  margin-top: 0;
+  position: relative;
+}
+
+.profile_data {
+  width: 5rem;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  margin-left: -2.5rem;
+  text-align: center;
+}
+.profileImg {
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border: 3px solid var(--second-color);
+}
+h3 {
+  font-size: 0.7em;
+}
+@media (min-width: 500px) {
+  .profile_data {
+    width: 8rem;
+    margin-left: -4.2rem;
+    top: 35%;
+  }
+  h3 {
+    font-size: 0.9em;
+    margin-top: 0.5rem;
+  }
+  .profileImg {
+    border: 5px solid var(--second-color);
+  }
+}
+@media (min-width: 750px) {
+  .profile_data {
+    top: 45%;
+  }
+  .profileImg {
+    border: 8px solid var(--second-color);
+  }
+}
+
+@media (min-width: 1000px) {
+  .profile_data {
+    width: 10rem;
+    margin-left: -5.4rem;
+    top: 50%;
+  }
+  h3 {
+    font-size: 1.1em;
+  }
+  .profileImg {
+    border: 10px solid var(--second-color);
+  }
+}
