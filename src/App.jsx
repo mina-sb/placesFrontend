@@ -13,7 +13,7 @@ import Profile from "./user/components/ProfileHeader";
 import UserProfile from "./user/pages/UserProfile";
 
 function App() {
-  const { token, login, logout, userId, name } = useAuth();
+  const { token, login, logout, userId, name, image } = useAuth();
 
   let routes;
 
@@ -43,6 +43,7 @@ function App() {
         userId: userId,
         token: token,
         name: name,
+        image: image,
         login: login,
         logout: logout,
       }}

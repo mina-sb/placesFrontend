@@ -25,7 +25,6 @@ const ProfileHeader = () => {
     } catch (err) {}
   };
 
-  console.log(user);
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />

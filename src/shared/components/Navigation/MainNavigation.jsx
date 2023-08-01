@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import MainHeader from "./MainHeader";
 
 import "./MainNavigation.css";
 import NavLinks from "./NavLinks";
 import SideDrawer from "./SideDrawer";
 import Backdrop from "../UIElements/Backdrop";
+import { AuthContext } from "../../context/auth-context";
 
 const MainNavigation = (props) => {
   const [isNightMode, setIsNightMode] = useState(false);
+  const user = useContext(AuthContext);
   const changeThemeMode = () => {
     if (!isNightMode) {
       document.body.classList.add("night");
@@ -45,10 +47,15 @@ const MainNavigation = (props) => {
               class="bx bx-menu navigation-button"
               onClick={openDrawerHandler}
             ></i>
+
             <i
               class="bx bx-moon navigation-button"
               onClick={changeThemeMode}
             ></i>
+            <img
+              className="nav-profileImg"
+              src={`http://localhost:5000/${user.image}`}
+            />
           </div>
         </nav>
       </MainHeader>

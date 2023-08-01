@@ -13,6 +13,7 @@
 .navigation-buttons {
   margin-left: auto;
   display: flex;
+  align-items: center;
 }
 .navigation-button {
   font-size: 1.5rem;
@@ -34,6 +35,15 @@
 }
 .navlinks-container {
   display: none;
+}
+.nav-profileImg {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: all ease 0.55s;
+  margin: 0 0.5rem;
 }
 @media (min-width: 768px) {
   .bx-menu {
