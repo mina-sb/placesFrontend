@@ -11,7 +11,7 @@ import NewPlace from "./place/pages/NewPlace";
 import UpdatePlace from "./place/pages/UpdatePlace";
 
 function App() {
-  const { token, login, logout, userId } = useAuth();
+  const { token, login, logout, userId, name } = useAuth();
 
   let routes;
 
@@ -40,6 +40,7 @@ function App() {
         isLoggedIn: !!token,
         userId: userId,
         token: token,
+        name: name,
         login: login,
         logout: logout,
       }}
