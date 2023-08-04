@@ -31,7 +31,22 @@
   padding: 0.5rem;
   cursor: pointer;
 }
-
+.dropdown-list li div {
+  display: flex;
+  align-items: center;
+}
+.dropdown-list li div i {
+  font-size: 1.4em;
+  color: var(--third-color);
+  font-weight: 500;
+  margin-right: 1rem;
+}
+.dropdown-list li div span {
+  font-size: 1em;
+  font-weight: 500;
+  margin-right: 1rem;
+  color: var(--text-color);
+}
 @media (min-width: 768px) {
   .dropdown {
     top: 4.5rem;
