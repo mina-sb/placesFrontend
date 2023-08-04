@@ -10,11 +10,13 @@
   font-weight: bold;
   color: var(--main-color);
 }
+.navlinks-container {
+  position: relative;
+}
 .navigation-buttons {
   margin-left: auto;
   display: flex;
   align-items: center;
-  position: relative;
 }
 .navigation-button {
   font-size: 1.5rem;

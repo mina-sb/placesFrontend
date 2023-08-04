@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "./App.css";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import { Route, Routes } from "react-router-dom";
@@ -11,27 +11,8 @@ import UpdatePlace from "./place/pages/UpdatePlace";
 import UserProfile from "./user/pages/UserProfile";
 
 function App() {
-  const ref = useRef();
   const { token, login, logout, userId, name, image } = useAuth();
   let routes;
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const openMenu = () => {
-    setIsMenuOpen(true);
-  };
-
-  useEffect(() => {
-    const checkIfClickedOutside = (e) => {
-      if (isMenuOpen && ref.current) {
-        setIsMenuOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", checkIfClickedOutside);
-    return () => {
-      // Cleanup the event listener
-      document.removeEventListener("mousedown", checkIfClickedOutside);
-    };
-  }, [isMenuOpen]);
 
   if (token) {
     routes = (
@@ -64,8 +45,8 @@ function App() {
         logout: logout,
       }}
     >
-      <MainNavigation showMenu={isMenuOpen} setOpen={openMenu} />
-      <div ref={ref}>
+      <MainNavigation />
+      <div>
         <main>{routes}</main>
       </div>
     </AuthContext.Provider>

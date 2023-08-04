@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import MainHeader from "./MainHeader";
 import "./MainNavigation.css";
 import NavLinks from "./NavLinks";
@@ -9,7 +9,15 @@ import DropDown from "../UIElements/DropDown";
 
 const MainNavigation = (props) => {
   const [isNightMode, setIsNightMode] = useState(false);
-  const user = useContext(AuthContext);
+  const auth = useContext(AuthContext);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const openMenu = () => {
+    setIsMenuOpen(true);
+  };
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   const changeThemeMode = () => {
     if (!isNightMode) {
@@ -46,17 +54,21 @@ const MainNavigation = (props) => {
               class="bx bx-menu navigation-button"
               onClick={openDrawerHandler}
             ></i>
-
             <i
               class="bx bx-moon navigation-button"
               onClick={changeThemeMode}
             ></i>
-            <img
-              className="nav-profileImg"
-              onClick={props.setOpen}
-              src={`http://localhost:5000/${user.image}`}
-            />
-            <DropDown show={props.showMenu} />
+            {auth.isLoggedIn && (
+              <img
+                className="nav-profileImg"
+                onClick={openMenu}
+                src={`http://localhost:5000/${auth.image}`}
+              />
+            )}
+
+            {auth.isLoggedIn && (
+              <DropDown show={isMenuOpen} close={closeMenu} />
+            )}
           </div>
         </nav>
       </MainHeader>
