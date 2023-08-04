@@ -8,12 +8,20 @@ const DropDown = (props) => {
   const navigate = useNavigate();
 
   const closeMenu = (e) => {
-    if (e.target.id === "profile") {
+    console.log(e.target.parentElement);
+    if (e.target.id === "setting" || e.target.parentElement.id === "setting") {
+      navigate("/settings");
+      document.removeEventListener("mousedown", closeMenu);
+      props.close();
+    }
+    if (e.target.id === "profile" || e.target.parentElement.id === "profile") {
       navigate(`/${auth.userId}/places`);
       document.removeEventListener("mousedown", closeMenu);
+      props.close();
     }
-    if (e.target.id === "logout") {
+    if (e.target.id === "logout" || e.target.parentElement.id === "logout") {
       auth.logout();
+      props.close();
       document.removeEventListener("mousedown", closeMenu);
     } else {
       props.close();
@@ -27,16 +35,20 @@ const DropDown = (props) => {
 
   const dropdown = (
     <ul className="dropdown-list">
-      <li></li>
+      <li>
+        <div id="setting">
+          <i class="bx bxs-cog"></i> <span>Setting</span>
+        </div>
+      </li>
       <li>
         <div id="profile">
-          <i class="bx bxs-user-rectangle"></i> My Profile
+          <i class="bx bxs-user-rectangle"></i> <span>My Profile</span>
         </div>
       </li>
       <li>
         <div id="logout">
           <i class="bx bxs-exit"></i>
-          Logout
+          <span>Logout</span>
         </div>
       </li>
     </ul>
