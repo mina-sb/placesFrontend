@@ -1,0 +1,51 @@
+.svg-container {
+  margin-top: 2rem;
+}
+#World {
+  animation: world 15s infinite linear;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes world {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+#Trees {
+  animation: Trees 4s infinite linear;
+  transform-origin: bottom;
+  transform-box: fill-box;
+}
+
+@keyframes Trees {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  50% {
+    transform: rotateZ(5deg);
+  }
+  100% {
+    transform: rotateZ(0deg);
+  }
+}
+
+#clouds {
+  animation: clouds 12s infinite linear;
+  animation-delay: 2s;
+  transform-origin: bottom;
+  transform-box: fill-box;
+}
+
+@keyframes clouds {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(32rem);
+  }
+}
