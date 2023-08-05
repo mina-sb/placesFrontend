@@ -10,6 +10,7 @@ import NewPlace from "./place/pages/NewPlace";
 import UpdatePlace from "./place/pages/UpdatePlace";
 import UserProfile from "./user/pages/UserProfile";
 import UserSetting from "./user/pages/UserSetting";
+import Main from "./Main";
 
 function App() {
   const { token, login, logout, userId, name, image } = useAuth();
@@ -18,7 +19,7 @@ function App() {
   if (token) {
     routes = (
       <Routes>
-        <Route path="/" element={<Users />} />
+        <Route path="/" element={<Main />} />
         <Route path="/places/new" element={<NewPlace />} />
         <Route path="/:userId/places" element={<UserProfile />} />
         <Route path="/places/:placeId" element={<UpdatePlace />} />
@@ -28,7 +29,7 @@ function App() {
   } else {
     routes = (
       <Routes>
-        <Route path="/" element={<Users />} />
+        <Route path="/" element={<Main />} />
         <Route path="/:userId/places" element={<UserProfile />} />
         <Route path="/auth" element={<Auth />} />]{" "}
       </Routes>
