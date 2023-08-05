@@ -1,0 +1,172 @@
+.settings {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 2rem 2rem;
+  gap: 2rem;
+}
+.img_edit_container {
+  flex: 0 0 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profileImg {
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  max-width: 60%;
+  height: auto;
+  object-fit: cover;
+  margin-top: 2rem;
+}
+.delete_btn {
+  position: absolute;
+  top: 2.5rem;
+  right: 22%;
+  font-size: 1em;
+  background-color: var(--bg-color);
+  border-radius: 50%;
+  color: var(--text-color);
+  padding: 0.3rem 0.5rem;
+  transition: all 0.5s;
+}
+.delete_btn:hover {
+  background-color: var(--main-color);
+  color: var(--second-color);
+  box-shadow: rgba(22, 23, 26, 0.1) 0 10px 30px -10px;
+}
+.info_edit {
+  flex: 0 0 65%;
+}
+h3 {
+  font-size: 1.7em;
+  color: var(--text-color);
+  margin-top: 2rem;
+}
+.mt_2 {
+  margin-top: 1rem;
+}
+.img_info {
+  color: var(--other-color);
+  background-color: var(--bg-color);
+  font-size: 0.6em;
+  border: 1px solid var(--other-color);
+  border-radius: 5px;
+  padding: 0.5rem;
+  text-align: justify;
+  margin: 1rem;
+}
+.info_container {
+  padding: 1rem 2.5rem 0;
+}
+
+.tabs {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  margin-block-end: 0em;
+  margin-top: 1.5rem;
+  position: relative;
+}
+.tabs li {
+  margin-right: 1.3rem;
+  font-weight: 500;
+  font-size: 0.9em;
+  padding: 15px;
+}
+
+.tabs:after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0rem;
+  width: 6rem;
+  height: 0.5em;
+  border-top: 5px solid var(--main-color);
+  transition: all 1s;
+}
+.tabs.left:after {
+  transform: translateX(0rem);
+}
+.tabs.right:after {
+  transform: translateX(7.9rem);
+}
+.line {
+  border-top: 1px solid var(--other-color);
+  opacity: 0.3;
+}
+@media (min-width: 400px) {
+  .delete_btn {
+    top: 2.5rem;
+    right: 30%;
+    font-size: 1.2em;
+  }
+  .profileImg {
+    max-width: 40%;
+  }
+}
+@media (min-width: 600px) {
+  .settings {
+    padding: 2rem 2rem;
+    flex-direction: row;
+    gap: 1rem;
+  }
+  .profileImg {
+    max-width: 90%;
+  }
+  .delete_btn {
+    top: 2.5rem;
+    right: 10%;
+  }
+  .img_info {
+    font-size: 0.5em;
+    padding: 0.4rem;
+    margin: 1rem 0.3rem 0.3rem;
+  }
+}
+@media (min-width: 800px) {
+  .settings {
+    padding: 2rem 3rem;
+  }
+  .delete_btn {
+    top: 2.5rem;
+    right: 10%;
+    font-size: 1.2em;
+    padding: 0.3rem 0.6rem;
+  }
+  .profileImg {
+    max-width: 80%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .settings {
+    padding: 2rem 8rem;
+    gap: 2rem;
+  }
+  .delete_btn {
+    font-size: 1.2em;
+  }
+  .profileImg {
+    max-width: 70%;
+  }
+  .img_info {
+    font-size: 0.65em;
+    padding: 0.7rem;
+  }
+}
+@media (min-width: 1200px) {
+  .delete_btn {
+    font-size: 1.3em;
+    right: 20%;
+    padding: 0.4rem 0.7rem;
+  }
+}
