@@ -67,7 +67,9 @@ h3 {
 .info_container {
   padding: 1rem 2.5rem 0;
 }
-
+.info_container div {
+  padding: 1rem 0 1.5rem;
+}
 .tabs {
   list-style: none;
   display: flex;

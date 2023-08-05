@@ -6,6 +6,7 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import Button from "../../shared/components/FormElements/Button";
+import UserInfoEdit from "../components/UserInfoEdit";
 
 const UserSetting = () => {
   const auth = useContext(AuthContext);
@@ -80,7 +81,12 @@ const UserSetting = () => {
                 </ul>
               </div>
               <div className={styles.line}></div>
-              <div className={styles.info_container}></div>
+              <div className={styles.info_container}>
+                <div>
+                  {!activeTab && <UserInfoEdit />}
+                  {activeTab && <UserInfoEdit />}
+                </div>
+              </div>
             </Card>
           </div>
         </div>
