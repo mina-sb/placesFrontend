@@ -51,6 +51,7 @@
   background: var(--main-color);
   color: var(--second-color);
 }
+
 .full-width-button {
   width: 100%;
 }
@@ -70,4 +71,12 @@
 .btn-xs {
   font-size: 0.8em;
   font-weight: 300;
+}
+.btn-xl {
+  font-size: 1.2em !important;
+  font-weight: 600 !important;
+  padding: 0.8rem 1.8rem;
+}
+.ml {
+  margin-left: 0.5rem;
 }
