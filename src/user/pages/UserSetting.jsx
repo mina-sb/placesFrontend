@@ -7,17 +7,22 @@ import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import Button from "../../shared/components/FormElements/Button";
 import UserInfoEdit from "../components/UserInfoEdit";
+import NotificationSettings from "../components/NotificationSettings";
 
 const UserSetting = () => {
   const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [user, setUser] = useState({});
   const [activeTab, setActiveTab] = useState(true);
-  const [activeClass, setActiveClass] = useState(true);
+  const [activeClass, setActiveClass] = useState(styles.left);
 
-  const activeTabHandler = () => {
-    setActiveTab(!activeTab);
-    activeTab ? setActiveClass(styles.left) : setActiveClass(styles.right);
+  const setNotificationTab = () => {
+    setActiveTab(false);
+    setActiveClass(styles.right);
+  };
+  const setInfoTab = () => {
+    setActiveTab(true);
+    setActiveClass(styles.left);
   };
   useEffect(() => {
     getUser();
@@ -72,19 +77,19 @@ const UserSetting = () => {
               <div className={styles.info_container}>
                 <h3>Edit Profile</h3>
                 <ul className={`${styles.tabs} ${activeClass}`}>
-                  <li className={styles.active} onClick={activeTabHandler}>
-                    <span>User Info</span>
+                  <li onClick={setInfoTab}>
+                    <span className={styles.tab_title}>User Info</span>
                   </li>
-                  <li onClick={activeTabHandler}>
-                    <span>Notifications</span>
+                  <li onClick={setNotificationTab}>
+                    <span className={styles.tab_title}>Notifications</span>
                   </li>
                 </ul>
               </div>
               <div className={styles.line}></div>
               <div className={styles.info_container}>
-                <div>
-                  {!activeTab && <UserInfoEdit />}
+                <div className={styles.tab_container}>
                   {activeTab && <UserInfoEdit />}
+                  {!activeTab && <NotificationSettings />}
                 </div>
               </div>
             </Card>
