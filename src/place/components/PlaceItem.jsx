@@ -8,6 +8,7 @@ import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import { AuthContext } from "../../shared/context/auth-context";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import "./PlaceItem.css";
+import { Link } from "react-router-dom";
 
 const PlaceItem = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -90,14 +91,18 @@ const PlaceItem = (props) => {
           <div className="place-item__info">
             <div className="user-info">
               <div className="user-info">
-                <img
-                  className="user_img"
-                  src="http://localhost:5000/uploads/images/3eae7ba0-2ed8-11ee-a260-47587acce2f4.png"
-                />
-                <div>
-                  <span className="user_name">mina</span>
-                  <span className="user_places">25 Places</span>
-                </div>
+                <Link to={`${props.creatorId}/places`}>
+                  <img
+                    className="user_img"
+                    src="http://localhost:5000/uploads/images/3eae7ba0-2ed8-11ee-a260-47587acce2f4.png"
+                  />
+                </Link>
+                <Link to={`${props.creatorId}/places`}>
+                  <div className="user_name_container">
+                    <span className="user_name">mina</span>
+                    <span className="user_places">25 Places</span>
+                  </div>
+                </Link>
               </div>
               <i class="bx bx-dots-horizontal-rounded menu"></i>
             </div>
