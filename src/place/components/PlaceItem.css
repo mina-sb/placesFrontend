@@ -44,6 +44,22 @@
   font-size: 1.4em !important;
   font-weight: 600;
   color: var(--text-color);
+  margin-top: 1.5rem !important;
+}
+.loaction-container {
+  display: flex;
+  margin-top: 1rem;
+}
+.location {
+  margin-right: 0.2rem;
+  opacity: 0.8;
+}
+.place-item__info_h3 {
+  font-size: 0.8em !important;
+  font-weight: 500;
+  color: var(--text-color);
+  opacity: 0.8;
+  display: inline-block;
 }
 .place-item__actions {
   padding: 0.5rem;
@@ -61,6 +77,13 @@
   border-radius: 50%;
   object-fit: cover;
   filter: drop-shadow(-2px 2px 2px rgba(0, 0, 0, 0.24));
+  transition: all 0.5s;
+}
+.user_img:hover {
+  width: 37px;
+  height: 37px;
+  object-fit: cover;
+  filter: drop-shadow(-2px 2px 2px rgba(0, 0, 0, 0.6));
 }
 .user_name {
   font-size: 0.8em;

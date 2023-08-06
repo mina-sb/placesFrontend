@@ -88,9 +88,25 @@ const PlaceItem = (props) => {
             />
           </div>
           <div className="place-item__info">
-            <h2>{props.title}</h2>
-            <h3>{props.address}</h3>
+            <div className="user-info">
+              <div className="user-info">
+                <img
+                  className="user_img"
+                  src="http://localhost:5000/uploads/images/3eae7ba0-2ed8-11ee-a260-47587acce2f4.png"
+                />
+                <div>
+                  <span className="user_name">mina</span>
+                  <span className="user_places">25 Places</span>
+                </div>
+              </div>
+              <i class="bx bx-dots-horizontal-rounded menu"></i>
+            </div>
+            <h2 className="place-item__info_h2">{props.title}</h2>
             <p>{props.description}</p>
+            <div className="loaction-container">
+              <i class="bx bx-location-plus location"></i>
+              <h3 className="place-item__info_h3">{props.address}</h3>
+            </div>
           </div>
           <div className="place-item__actions">
             <Button class="third-color-button btn-xs" onClick={openMapHandler}>
