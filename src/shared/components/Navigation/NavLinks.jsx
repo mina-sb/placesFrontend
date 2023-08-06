@@ -19,7 +19,7 @@ const NavLinks = () => {
             setActiveTab("users");
           }}
         >
-          All Users
+          HOME
         </Button>
       </li>
       <li>
@@ -28,10 +28,9 @@ const NavLinks = () => {
             class={`${
               activeTab === "auth" ? "main-color-button" : "outline-button"
             }`}
-            to="/auth"
-            onClick={auth.logout}
+            to="/places/new"
           >
-            LOG OUT
+            ADD NEW PLACE
           </Button>
         ) : (
           <Button
