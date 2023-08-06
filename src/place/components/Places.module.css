@@ -1,0 +1,19 @@
+.places {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 6rem;
+  flex-wrap: wrap;
+}
+.places_h2 {
+  font-weight: 800;
+  font-size: 2.5em;
+  text-align: center;
+  opacity: 0.8;
+  color: var(--text-color);
+  border-bottom: 3px solid var(--main-color);
+  display: inline-block;
+  margin: 0 auto;
+  margin-bottom: -3rem;
+}
