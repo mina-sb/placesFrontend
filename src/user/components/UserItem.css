@@ -21,6 +21,14 @@
 .user-item a:active {
   background: var(--main-color);
 }
+.user-item a:hover h2,
+.user-item a:active h2 {
+  color: var(--second-color);
+}
+.user-item a:hover h3,
+.user-item a:active h3 {
+  color: var(--second-color);
+}
 
 .user-item__content {
   padding: 0;
