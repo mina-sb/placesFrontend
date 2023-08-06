@@ -8,8 +8,7 @@
 }
 
 .place-item__info {
-  padding: 1rem;
-  text-align: center;
+  padding: 1rem 1.2rem;
 }
 
 .place-item__image {
@@ -35,13 +34,62 @@
   margin: 0 0 0.5rem 0;
   color: var(--text-color);
 }
+.place-item__info p {
+  text-align: justify;
+  font-size: 0.7em;
+  opacity: 0.8;
+}
 
+.place-item__info_h2 {
+  font-size: 1.4em !important;
+  font-weight: 600;
+  color: var(--text-color);
+}
 .place-item__actions {
   padding: 0.5rem;
   text-align: center;
   border-top: 1px solid #ccc;
 }
+.user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.user_img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: drop-shadow(-2px 2px 2px rgba(0, 0, 0, 0.24));
+}
+.user_name {
+  font-size: 0.8em;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-left: 1rem;
+  opacity: 0.8;
+}
 
+.user_places {
+  font-size: 0.7em;
+  font-weight: 400;
+  color: var(--other-color);
+  margin-left: 1rem;
+  display: block;
+}
+
+.menu {
+  font-size: 1.2em;
+  padding: 0.5rem;
+  transition: all 0.3s;
+  color: var(--text-color);
+  border-radius: 50%;
+}
+
+.menu:hover {
+  background-color: var(--main-color);
+  color: var(--second-color);
+}
 .place-item__modal-content {
   padding: 0;
 }
@@ -70,9 +118,15 @@
 
 @media (min-width: 780px) {
   .place-item {
-    flex: 0 0 31%;
+    flex: 0 0 30%;
   }
   .place-item__actions {
     padding: 0.5rem;
+  }
+}
+
+@media (min-width: 850px) {
+  .place-item {
+    flex: 0 0 22%;
   }
 }
