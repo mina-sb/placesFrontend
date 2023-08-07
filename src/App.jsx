@@ -3,7 +3,6 @@ import "./App.css";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import { Route, Routes } from "react-router-dom";
 import Auth from "./user/pages/Auth";
-import Users from "./user/pages/Users";
 import { useAuth } from "./shared/hooks/auth-hook";
 import { AuthContext } from "./shared/context/auth-context";
 import NewPlace from "./place/pages/NewPlace";
@@ -11,6 +10,7 @@ import UpdatePlace from "./place/pages/UpdatePlace";
 import UserProfile from "./user/pages/UserProfile";
 import UserSetting from "./user/pages/UserSetting";
 import Main from "./Main";
+import Footer from "./shared/components/Footer";
 
 function App() {
   const { token, login, logout, userId, name, image } = useAuth();
@@ -52,6 +52,7 @@ function App() {
       <div>
         <main>{routes}</main>
       </div>
+      <Footer />
     </AuthContext.Provider>
   );
 }

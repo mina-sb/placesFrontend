@@ -1,0 +1,53 @@
+.footerImg {
+  display: flex;
+  justify-content: start;
+}
+#Car {
+  animation: car 0.9s infinite linear;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes car {
+  0% {
+    transform: rotateZ(0deg);
+    transform: translateY(0);
+  }
+  50% {
+    transform: rotateZ(2deg);
+    transform: translateY(5px);
+  }
+  100% {
+    transform: rotateZ(0deg);
+    transform: translateY(0);
+  }
+}
+
+#rightWheel,
+#leftWheel {
+  animation: wheel 3s infinite linear;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes wheel {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+#Tree {
+  animation: Tree 15s infinite linear;
+  transform-origin: bottom;
+  transform-box: fill-box;
+}
+
+@keyframes Tree {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-30rem);
+  }
+}
