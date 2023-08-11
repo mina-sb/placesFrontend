@@ -8,7 +8,6 @@ const DropDown = (props) => {
   const navigate = useNavigate();
 
   const closeMenu = (e) => {
-    console.log(e.target.parentElement);
     if (e.target.id === "setting" || e.target.parentElement.id === "setting") {
       navigate("/settings");
       document.removeEventListener("mousedown", closeMenu);
