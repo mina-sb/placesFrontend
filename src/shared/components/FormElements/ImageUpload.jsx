@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from "react";
 
 import Button from "./Button";
 import "./ImageUpload.css";
-import img from "../../assets/6369737.png";
 
 const ImageUpload = (props) => {
   const [file, setFile] = useState();
@@ -23,6 +22,9 @@ const ImageUpload = (props) => {
   }, [file]);
 
   const pickedHandler = (event) => {
+    props.setDeletedImg(false);
+
+    console.log(props.deletedImg);
     let pickedFile;
     let fileIsValid = isValid;
     if (event.target.files && event.target.files.length === 1) {
@@ -62,11 +64,19 @@ const ImageUpload = (props) => {
           }
         >
           {props.profile ? (
-            <img
-              src={previewUrl ? previewUrl : props.defaultImg}
-              alt="Preview"
-              className="profileImg"
-            />
+            !props.deletedImg ? (
+              <img
+                src={previewUrl ? previewUrl : props.defaultImg}
+                alt="Preview"
+                className="profileImg"
+              />
+            ) : (
+              <img
+                src={props.defaultImg}
+                alt="Preview"
+                className="profileImg"
+              />
+            )
           ) : (
             <div>
               {previewUrl && <img src={previewUrl} alt="Preview" />}

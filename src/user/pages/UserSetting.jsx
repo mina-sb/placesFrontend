@@ -16,6 +16,7 @@ const UserSetting = () => {
   const [user, setUser] = useState({});
   const [activeTab, setActiveTab] = useState(true);
   const [activeClass, setActiveClass] = useState(styles.left);
+  const [userImg, setUserImg] = useState("");
 
   const setNotificationTab = () => {
     setActiveTab(false);
@@ -27,7 +28,6 @@ const UserSetting = () => {
   };
   useEffect(() => {
     getUser();
-    console.log(user.image);
   }, []);
 
   const getUser = async () => {
@@ -37,6 +37,7 @@ const UserSetting = () => {
         `http://localhost:5000/api/users/${auth.userId}`
       );
       setUser(responseData);
+      setUserImg(responseData.image);
     } catch (err) {}
   };
 
@@ -55,7 +56,7 @@ const UserSetting = () => {
               <div className={styles.img_edit_container}>
                 <h3>{user.name}</h3>
                 <div className={styles.img}>
-                  <UserProfileImgUplaod img={user.image} />
+                  <UserProfileImgUplaod img={userImg} />
                 </div>
 
                 <span className={styles.img_info}>
