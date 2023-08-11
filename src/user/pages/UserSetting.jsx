@@ -8,6 +8,7 @@ import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import Button from "../../shared/components/FormElements/Button";
 import UserInfoEdit from "../components/UserInfoEdit";
 import NotificationSettings from "../components/NotificationSettings";
+import UserProfileImgUplaod from "../components/UserProfileImgUplaod";
 
 const UserSetting = () => {
   const auth = useContext(AuthContext);
@@ -26,6 +27,7 @@ const UserSetting = () => {
   };
   useEffect(() => {
     getUser();
+    console.log(user.image);
   }, []);
 
   const getUser = async () => {
@@ -53,18 +55,9 @@ const UserSetting = () => {
               <div className={styles.img_edit_container}>
                 <h3>{user.name}</h3>
                 <div className={styles.img}>
-                  <img
-                    className={styles.profileImg}
-                    src={`http://localhost:5000/${user.image}`}
-                  />
-                  <span className={styles.delete_btn}>
-                    <i class="bx bx-trash"></i>
-                  </span>
+                  <UserProfileImgUplaod img={user.image} />
                 </div>
 
-                <Button class={`third-color-button btn-xs ${styles.mt_2}`}>
-                  New Photo
-                </Button>
                 <span className={styles.img_info}>
                   Profile Settings Page Ui design Profile Settings Page Ui
                   design Profile Settings Page Ui design Profile
