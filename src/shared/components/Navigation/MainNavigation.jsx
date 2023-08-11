@@ -6,11 +6,13 @@ import SideDrawer from "./SideDrawer";
 import Backdrop from "../UIElements/Backdrop";
 import { AuthContext } from "../../context/auth-context";
 import DropDown from "../UIElements/DropDown";
+import defaultImg from "../../assets/6369737.png";
 
 const MainNavigation = (props) => {
   const [isNightMode, setIsNightMode] = useState(false);
   const auth = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [userImg, setuserImg] = useState("");
 
   const openMenu = () => {
     setIsMenuOpen(true);
@@ -37,6 +39,14 @@ const MainNavigation = (props) => {
     setDrawerIsOpen(false);
   };
 
+  useEffect(() => {
+    if (auth.image) {
+      setuserImg(`http://localhost:5000/${auth.image}`);
+    } else {
+      setuserImg(defaultImg);
+    }
+  }, [auth]);
+
   return (
     <React.Fragment>
       {drawerIsOpen && <Backdrop onClick={closeDrawerHandler} />}
@@ -62,7 +72,7 @@ const MainNavigation = (props) => {
               <img
                 className="nav-profileImg"
                 onClick={openMenu}
-                src={`http://localhost:5000/${auth.image}`}
+                src={userImg}
               />
             )}
 
