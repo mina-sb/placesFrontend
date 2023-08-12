@@ -8,6 +8,7 @@ import styles from "./Places.module.css";
 const Places = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedPlaces, setLoadedPlaces] = useState();
+  const [creatorInfo, setCreatorInfo] = useState({});
 
   const placeDeletedHandler = (deletedPlaceId) => {
     setLoadedPlaces((prevPlaces) =>
@@ -21,7 +22,6 @@ const Places = () => {
         const responseData = await sendRequest(
           "http://localhost:5000/api/places"
         );
-
         setLoadedPlaces(responseData.places);
       } catch (err) {}
     };
@@ -39,7 +39,11 @@ const Places = () => {
       {!isLoading && loadedPlaces && (
         <div className={styles.places}>
           <h2 className={styles.places_h2}>Places</h2>
-          <PlaceList items={loadedPlaces} onDeletePlace={placeDeletedHandler} />
+          <PlaceList
+            items={loadedPlaces}
+            onDeletePlace={placeDeletedHandler}
+            creatorInfo={creatorInfo}
+          />
         </div>
       )}
     </React.Fragment>

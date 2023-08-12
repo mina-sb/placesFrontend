@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import Card from "../../shared/components/UIElements/Card";
 import Button from "../../shared/components/FormElements/Button";
@@ -9,22 +9,25 @@ import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import { AuthContext } from "../../shared/context/auth-context";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import "./PlaceItem.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const PlaceItem = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const auth = useContext(AuthContext);
   const [showMap, setShowMap] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
-
+  const [lnk, setLnk] = useState("");
+  const currentPlace = !!useLocation().pathname.includes("places");
   const openMapHandler = () => setShowMap(true);
 
+  useEffect(() => {
+    if (!currentPlace) setLnk(`${props.creatorId}/places`);
+  }, []);
   const closeMapHandler = () => setShowMap(false);
 
   const showDeleteWarningHandler = () => {
     setShowConfirmModal(true);
   };
-
   const cancelDeleteHandler = () => {
     setShowConfirmModal(false);
   };
@@ -92,16 +95,15 @@ const PlaceItem = (props) => {
           <div className="place-item__info">
             <div className="user-info">
               <div className="user-info">
-                <Link to={`${props.creatorId}/places`}>
-                  <img
-                    className="user_img"
-                    src="http://localhost:5000/uploads/images/3eae7ba0-2ed8-11ee-a260-47587acce2f4.png"
-                  />
+                <Link to={lnk}>
+                  <img className="user_img" src={props.creatorInfo.image} />
                 </Link>
-                <Link to={`${props.creatorId}/places`}>
+                <Link to={lnk}>
                   <div className="user_name_container">
-                    <span className="user_name">mina</span>
-                    <span className="user_places">25 Places</span>
+                    <span className="user_name">{props.creatorInfo.name}</span>
+                    <span className="user_places">
+                      {props.creatorInfo.placesCount} Places
+                    </span>
                   </div>
                 </Link>
               </div>

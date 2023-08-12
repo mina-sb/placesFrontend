@@ -5,10 +5,12 @@ import PlaceList from "../components/PlaceList";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import defaultImg from "../../shared/assets/6369737.png";
 
 const UserPlaces = () => {
   const [loadedPlaces, setLoadedPlaces] = useState();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const [creatorInfo, setCreatorInfo] = useState({});
 
   const userId = useParams().userId;
 
@@ -19,6 +21,18 @@ const UserPlaces = () => {
           `http://localhost:5000/api/places/user/${userId}`
         );
         setLoadedPlaces(responseData.places);
+
+        let img;
+        if (responseData.userImg) {
+          img = `http://localhost:5000/${responseData.userImg}`;
+        } else {
+          img = defaultImg;
+        }
+        setCreatorInfo({
+          name: responseData.name,
+          image: img,
+          placesCount: responseData.placesCount,
+        });
       } catch (err) {}
     };
     fetchPlaces();
@@ -39,7 +53,11 @@ const UserPlaces = () => {
         </div>
       )}
       {!isLoading && loadedPlaces && (
-        <PlaceList items={loadedPlaces} onDeletePlace={placeDeletedHandler} />
+        <PlaceList
+          items={loadedPlaces}
+          creatorInfo={creatorInfo}
+          onDeletePlace={placeDeletedHandler}
+        />
       )}
     </React.Fragment>
   );
