@@ -9,11 +9,9 @@ import { useForm } from "../../shared/hooks/form-hook";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { AuthContext } from "../../shared/context/auth-context";
 
-const UserInfoEdit = () => {
+const UserInfoEdit = (props) => {
   const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
-  const [loadedPlace, setLoadedPlace] = useState();
-  const navigate = useNavigate();
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -29,48 +27,44 @@ const UserInfoEdit = () => {
     false
   );
 
-  /*   useEffect(() => {
+  useEffect(() => {
     const fetchPlace = async () => {
-      try {
-        const responseData = await sendRequest(
-          `http://localhost:5000/api/places/${auth.userId}`
-        );
-        setLoadedPlace(responseData.place);
-        setFormData(
-          {
-            title: {
-              value: responseData.place.title,
-              isValid: true,
-            },
-            description: {
-              value: responseData.place.description,
-              isValid: true,
-            },
+      setFormData(
+        {
+          name: {
+            value: props.name,
+            isValid: true,
           },
-          true
-        );
-      } catch (err) {}
+          email: {
+            value: props.email,
+            isValid: true,
+          },
+        },
+        true
+      );
     };
     fetchPlace();
-  }, [sendRequest, placeId, setFormData]); */
+  }, [sendRequest, setFormData]);
 
-  const placeUpdateSubmitHandler = async (event) => {
+  const userInfoUpdateSubmitHandler = async (event) => {
+    let responseData;
     event.preventDefault();
-    /* try {
-      await sendRequest(
-        `http://localhost:5000/api/places/${auth.userId}`,
+    try {
+      responseData = await sendRequest(
+        `http://localhost:5000/api/users/${auth.userId}`,
         "PATCH",
         JSON.stringify({
-          name: formState.inputs.title.value,
-          email: formState.inputs.description.value,
+          name: formState.inputs.name.value,
+          email: formState.inputs.email.value,
+          userId: auth.userId,
         }),
         {
           "Content-Type": "application/json",
           Authorization: "Bearer " + auth.token,
         }
       );
-      navigate("/" + auth.userId + "/places");
-    } catch (err) {} */
+      props.getUser();
+    } catch (err) {}
   };
 
   if (isLoading) {
@@ -81,21 +75,11 @@ const UserInfoEdit = () => {
     );
   }
 
-  /*  if (!loadedPlace && !error) {
-    return (
-      <div className="center">
-        <Card>
-          <h2>Could not find place!</h2>
-        </Card>
-      </div>
-    );
-  } */
-
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       {!isLoading && (
-        <form onSubmit={placeUpdateSubmitHandler}>
+        <form onSubmit={userInfoUpdateSubmitHandler}>
           <Input
             id="name"
             type="text"
@@ -104,8 +88,7 @@ const UserInfoEdit = () => {
             errorText="Please enter a valid title."
             onInput={inputHandler}
             initialValid={true}
-            /*             initialValue={loadedPlace.title}
-             */
+            initialValue={props.name}
           />
 
           <Input
@@ -116,8 +99,7 @@ const UserInfoEdit = () => {
             errorText="Please enter a valid description (min. 5 characters)."
             onInput={inputHandler}
             initialValid={true}
-            /*             initialValue={loadedPlace.title}
-             */
+            initialValue={props.email}
           />
           <Button
             type="submit"

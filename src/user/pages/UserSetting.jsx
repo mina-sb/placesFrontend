@@ -58,7 +58,6 @@ const UserSetting = () => {
                 <div className={styles.img}>
                   <UserProfileImgUplaod img={userImg} />
                 </div>
-
                 <span className={styles.img_info}>
                   Profile Settings Page Ui design Profile Settings Page Ui
                   design Profile Settings Page Ui design Profile
@@ -82,7 +81,13 @@ const UserSetting = () => {
               <div className={styles.line}></div>
               <div className={styles.info_container}>
                 <div className={styles.tab_container}>
-                  {activeTab && <UserInfoEdit />}
+                  {activeTab && (
+                    <UserInfoEdit
+                      name={user.name}
+                      email={user.email}
+                      getUser={getUser}
+                    />
+                  )}
                   {!activeTab && <NotificationSettings />}
                 </div>
               </div>
