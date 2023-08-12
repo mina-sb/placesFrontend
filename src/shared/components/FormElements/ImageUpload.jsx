@@ -22,9 +22,10 @@ const ImageUpload = (props) => {
   }, [file]);
 
   const pickedHandler = (event) => {
-    props.setDeletedImg(false);
+    if (props.profile) {
+      props.setDeletedImg(false);
+    }
 
-    console.log(props.deletedImg);
     let pickedFile;
     let fileIsValid = isValid;
     if (event.target.files && event.target.files.length === 1) {
@@ -59,9 +60,7 @@ const ImageUpload = (props) => {
       />
       <div className={props.profile ? "profile-img-container" : "image-upload"}>
         <div
-          className={
-            props.profile ? "profile-img-container" : "image-upload__preview"
-          }
+          className={props.profile ? "profile-img-container" : "image-upload"}
         >
           {props.profile ? (
             !props.deletedImg ? (
@@ -78,13 +77,13 @@ const ImageUpload = (props) => {
               />
             )
           ) : (
-            <div>
+            <div className="image-upload__preview">
               {previewUrl && <img src={previewUrl} alt="Preview" />}
               {!previewUrl && <p>Please pick an image.</p>}
             </div>
           )}
         </div>
-        <div className="btn-container">
+        <div className={props.profile ? "btn-container" : ""}>
           <Button
             type="button"
             onClick={pickImageHandler}
