@@ -1,16 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./ProfileHeader.module.css";
 import Svg from "../../shared/assets/Svg";
-import { AuthContext } from "../../shared/context/auth-context";
 import { useParams } from "react-router-dom";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
-import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
+import defaultImg from "../../shared/assets/6369737.png";
 
 const ProfileHeader = () => {
   const userId = useParams().userId;
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [user, setUser] = useState({});
+  const [userImg, setUserImg] = useState("");
   useEffect(() => {
     getUser();
   }, [userId]);
@@ -22,6 +22,11 @@ const ProfileHeader = () => {
         `http://localhost:5000/api/users/${userId}`
       );
       setUser(responseData);
+      if (responseData.image) {
+        setUserImg(`http://localhost:5000/${responseData.image}`);
+      } else {
+        setUserImg(defaultImg);
+      }
     } catch (err) {}
   };
 
@@ -33,10 +38,7 @@ const ProfileHeader = () => {
         <header className={styles.header}>
           <Svg />
           <div className={styles.profile_data}>
-            <img
-              className={styles.profileImg}
-              src={`http://localhost:5000/${user.image}`}
-            />
+            <img className={styles.profileImg} src={userImg} />
             <h3>{user.name}</h3>
           </div>
         </header>
