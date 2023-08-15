@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import "./Auth.css";
 import Input from "../../shared/components/FormElements/Input";
 import Button from "../../shared/components/FormElements/Button";
-import img from "../../shared/assets/6369737.png";
+import img from "../../shared/assets/hi.png";
 import { useForm } from "../../shared/hooks/form-hook";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { AuthContext } from "../../shared/context/auth-context";
