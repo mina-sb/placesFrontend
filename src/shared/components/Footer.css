@@ -22,17 +22,20 @@
 
 .footer-container {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: start;
 }
 .img-container {
   padding-top: 3rem;
   max-height: 350px;
+  margin-left: 2rem;
+
   overflow: hidden;
 }
 .contact {
   margin-left: 2rem;
   padding-right: 2rem;
+  padding-bottom: 2rem;
   flex: 1 1 50%;
 }
 .contact-h3 {
@@ -55,4 +58,20 @@
 }
 .contact-icon:hover {
   color: var(--main-color);
+}
+@media (min-width: 700px) {
+  .footer-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .img-container {
+    padding-top: 3rem;
+    max-height: 350px;
+    margin-left: 0rem;
+    overflow: hidden;
+  }
+  .contact {
+    padding-bottom: 0rem;
+  }
 }
