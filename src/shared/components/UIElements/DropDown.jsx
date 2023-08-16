@@ -8,6 +8,14 @@ const DropDown = (props) => {
   const navigate = useNavigate();
 
   const closeMenu = (e) => {
+    if (
+      e.target.id === "addPlace" ||
+      e.target.parentElement.id === "addPlace"
+    ) {
+      navigate("places/new");
+      document.removeEventListener("mousedown", closeMenu);
+      props.close();
+    }
     if (e.target.id === "setting" || e.target.parentElement.id === "setting") {
       navigate("/settings");
       document.removeEventListener("mousedown", closeMenu);
@@ -34,6 +42,11 @@ const DropDown = (props) => {
 
   const dropdown = (
     <ul className="dropdown-list">
+      <li>
+        <div id="addPlace">
+          <i class="bx bxs-location-plus"></i> <span>Setting</span>
+        </div>
+      </li>
       <li>
         <div id="setting">
           <i class="bx bxs-cog"></i> <span>Setting</span>
