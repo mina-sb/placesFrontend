@@ -44,10 +44,10 @@ a {
 }
 
 .place-item__info_h2 {
-  font-size: 1.4em !important;
+  font-size: 1.2em !important;
   font-weight: 600;
   color: var(--text-color);
-  margin-top: 1.5rem !important;
+  margin-top: 1.2rem !important;
 }
 .loaction-container {
   display: flex;
@@ -155,7 +155,7 @@ a {
   }
 }
 
-@media (min-width: 850px) {
+@media (min-width: 950px) {
   .place-item {
     flex: 0 0 22%;
   }
