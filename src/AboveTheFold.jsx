@@ -16,7 +16,9 @@ const AboveTheFold = () => {
           <Button class="third-color-button btn-xl">All Places</Button>
         </div>
       </div>
-      <AroundTheWorld />
+      <div className={styles.img_container}>
+        <AroundTheWorld />
+      </div>
     </div>
   );
 };

@@ -5,8 +5,8 @@ const AroundTheWorld = () => {
   return (
     <div className="svg-container">
       <svg
-        width="500"
-        height="500"
+        width="90%"
+        height="90%"
         viewBox="0 0 500 500"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -1226,7 +1226,7 @@ const AroundTheWorld = () => {
         </g>
         <defs>
           <clipPath id="clip0_0_1">
-            <rect width="500" height="500" fill="white" />
+            <rect width="90%" height="90%" fill="white" />
           </clipPath>
         </defs>
       </svg>
