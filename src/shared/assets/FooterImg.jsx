@@ -7,6 +7,7 @@ const FooterImg = () => {
         width="493"
         height="346"
         viewBox="0 0 493 346"
+        className="dd"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >

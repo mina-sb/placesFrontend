@@ -2,6 +2,22 @@
   display: flex;
   justify-content: start;
 }
+.dd {
+  width: 250px;
+  height: auto;
+}
+@media (min-width: 390px) {
+  .dd {
+    width: 350px;
+    height: auto;
+  }
+}
+@media (min-width: 530px) {
+  .dd {
+    width: 493px;
+    height: 346px;
+  }
+}
 #Car {
   animation: car 0.9s infinite linear;
   transform-origin: center;

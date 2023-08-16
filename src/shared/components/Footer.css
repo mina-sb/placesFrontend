@@ -28,9 +28,9 @@
 .img-container {
   padding-top: 3rem;
   max-height: 350px;
-  margin-left: 2rem;
-
+  box-sizing: border-box;
   overflow: hidden;
+  margin-left: 2rem;
 }
 .contact {
   margin-left: 2rem;

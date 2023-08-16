@@ -1,6 +1,6 @@
 .place-list {
   list-style: none;
-  margin: 4rem auto;
+  margin: 8rem auto;
   margin-bottom: 6rem;
   display: flex;
   padding: 0 3rem;
@@ -20,13 +20,24 @@
 @media (min-width: 600px) {
   .place-list {
     flex-direction: row;
-    margin-top: 6rem;
+    margin-top: 8rem;
     flex-wrap: wrap;
+  }
+}
+@media (min-width: 900px) {
+  .place-list {
+    margin-top: 6rem;
+  }
+}
+@media (min-width: 900px) {
+  .place-list {
+    margin-top: 8rem;
   }
 }
 @media (min-width: 1100px) {
   .place-list {
     padding: 0 3rem;
     gap: 2rem;
+    margin-top: 8rem;
   }
 }
