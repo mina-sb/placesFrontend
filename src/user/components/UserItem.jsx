@@ -9,7 +9,7 @@ const UserItem = (props) => {
   const [img, setImg] = useState("");
   useEffect(() => {
     if (props.image) {
-      setImg(`http://localhost:5000/${props.image}`);
+      setImg(import.meta.env.VITE_APP_ASSET_URL + `/${props.image}`);
     } else {
       setImg(defaultImg);
     }

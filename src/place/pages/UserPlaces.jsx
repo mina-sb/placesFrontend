@@ -18,13 +18,13 @@ const UserPlaces = () => {
     const fetchPlaces = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/api/places/user/${userId}`
+          import.meta.env.VITE_APP_BACKEND_URL + `/places/user/${userId}`
         );
         setLoadedPlaces(responseData.places);
 
         let img;
         if (responseData.userImg) {
-          img = `http://localhost:5000/${responseData.userImg}`;
+          img = import.meta.env.VITE_APP_ASSET_URL + `/${responseData.userImg}`;
         } else {
           img = defaultImg;
         }

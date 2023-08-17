@@ -20,7 +20,7 @@ const Places = () => {
     const fetchUsers = async () => {
       try {
         const responseData = await sendRequest(
-          "http://localhost:5000/api/places"
+          import.meta.env.VITE_APP_BACKEND_URL + "/places"
         );
         setLoadedPlaces(responseData.places);
       } catch (err) {}

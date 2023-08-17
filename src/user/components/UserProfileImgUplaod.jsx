@@ -20,7 +20,7 @@ const UserProfileImgUplaod = (props) => {
       formData.append("image", img);
 
       responseData = await sendRequest(
-        `http://localhost:5000/api/users/${auth.userId}/img`,
+        import.meta.env.VITE_APP_BACKEND_URL + `/users/${auth.userId}/img`,
         "PATCH",
         formData,
         {
@@ -43,7 +43,7 @@ const UserProfileImgUplaod = (props) => {
       const formData = new FormData();
       formData.append("image", "");
       responseData = await sendRequest(
-        `http://localhost:5000/api/users/${auth.userId}/img`,
+        import.meta.env.VITE_APP_BACKEND_URL + `/users/${auth.userId}/img`,
         "DELETE",
         formData,
         {
@@ -69,7 +69,9 @@ const UserProfileImgUplaod = (props) => {
         setDeletedImg={setDeletedImg}
         profile={true}
         defaultImg={
-          props.img ? `http://localhost:5000/${props.img}` : defaultImg
+          props.img
+            ? import.meta.env.VITE_APP_ASSET_URL + `/${props.img}`
+            : defaultImg
         }
         saveImg={profileImgSubmitHandler}
         onInput={setImg}

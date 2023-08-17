@@ -34,7 +34,7 @@ const UserSetting = () => {
     let responseData;
     try {
       responseData = await sendRequest(
-        `http://localhost:5000/api/users/${auth.userId}`
+        import.meta.env.VITE_APP_BACKEND_URL +`/users/${auth.userId}`
       );
       setUser(responseData);
       setUserImg(responseData.image);

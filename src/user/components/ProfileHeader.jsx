@@ -19,11 +19,13 @@ const ProfileHeader = () => {
     let responseData;
     try {
       responseData = await sendRequest(
-        `http://localhost:5000/api/users/${userId}`
+        import.meta.env.VITE_APP_BACKEND_URL + `/users/${userId}`
       );
       setUser(responseData);
       if (responseData.image) {
-        setUserImg(`http://localhost:5000/${responseData.image}`);
+        setUserImg(
+          import.meta.env.VITE_APP_ASSET_URL + `/${responseData.image}`
+        );
       } else {
         setUserImg(defaultImg);
       }

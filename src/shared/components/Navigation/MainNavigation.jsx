@@ -41,7 +41,7 @@ const MainNavigation = (props) => {
 
   useEffect(() => {
     if (auth.image) {
-      setuserImg(`http://localhost:5000/${auth.image}`);
+      setuserImg(import.meta.env.VITE_APP_ASSET_URL + `/${auth.image}`);
     } else {
       setuserImg(defaultImg);
     }
