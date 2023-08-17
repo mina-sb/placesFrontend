@@ -44,7 +44,7 @@ const DropDown = (props) => {
     <ul className="dropdown-list">
       <li>
         <div id="addPlace">
-          <i class="bx bxs-location-plus"></i> <span>Setting</span>
+          <i class="bx bxs-location-plus"></i> <span>Add Place</span>
         </div>
       </li>
       <li>
