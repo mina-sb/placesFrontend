@@ -1,16 +1,28 @@
-import { useContext, useEffect, useRef, useState } from "react";
 import "./App.css";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import { Route, Routes } from "react-router-dom";
-import Auth from "./user/pages/Auth";
 import { useAuth } from "./shared/hooks/auth-hook";
 import { AuthContext } from "./shared/context/auth-context";
+import Main from "./Main";
+import Footer from "./shared/components/Footer";
+import React , {Suspense} from "react";
+import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
+
+/*
+import Auth from "./user/pages/Auth";
 import NewPlace from "./place/pages/NewPlace";
 import UpdatePlace from "./place/pages/UpdatePlace";
 import UserProfile from "./user/pages/UserProfile";
-import UserSetting from "./user/pages/UserSetting";
-import Main from "./Main";
-import Footer from "./shared/components/Footer";
+import UserSetting from "./user/pages/UserSetting"; */
+
+
+
+const UserSetting = React.lazy(() => import("./user/pages/UserSetting"));
+const UserProfile = React.lazy(() => import("./user/pages/UserProfile"));
+const UpdatePlace = React.lazy(() => import("./place/pages/UpdatePlace"));
+const NewPlace = React.lazy(() => import("./place/pages/NewPlace"));
+const Auth = React.lazy(() => import("./user/pages/Auth"));
+
 
 function App() {
   const { token, login, logout, userId, name, image } = useAuth();
@@ -31,7 +43,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/:userId/places" element={<UserProfile />} />
-        <Route path="/auth" element={<Auth />} />]{" "}
+        <Route path="/auth" element={<Auth />} />
       </Routes>
     );
   }
@@ -50,7 +62,11 @@ function App() {
     >
       <MainNavigation />
       <div>
-        <main>{routes}</main>
+        <main>
+          <Suspense fallback={<div className="center">
+            <LoadingSpinner />
+          </div>}>{routes} </Suspense>
+        </main>
       </div>
       <Footer />
     </AuthContext.Provider>

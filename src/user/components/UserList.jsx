@@ -43,10 +43,10 @@ const UserList = (props) => {
         </Swiper>
         <div className="swiper-nav-btns">
           <button onClick={prevto}>
-            <i class="bx bxs-chevron-left mt"></i>
+            <i class="bx bxs-chevron-left"></i>
           </button>
           <button onClick={nexto}>
-            <i class="bx bxs-chevron-right mt"></i>
+            <i class="bx bxs-chevron-right"></i>
           </button>
         </div>
       </React.Fragment>
