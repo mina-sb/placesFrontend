@@ -17,6 +17,7 @@ export const useHttpClient = () => {
           method,
           body,
           headers,
+          mode: "no-cors"
           //signal: httpAbortCtrl.signal,
         });
 
