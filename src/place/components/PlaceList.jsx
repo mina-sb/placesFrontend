@@ -45,7 +45,7 @@ const PlaceList = (props) => {
     let li = props.items.map((place) => {
       let img;
       if (place.creator.image) {
-        img = import.meta.env.VITE_APP_ASSET_URL + `/${place.creator.image}`;
+        img =  `${place.creator.image}`;
       } else {
         img = defaultImg;
       }

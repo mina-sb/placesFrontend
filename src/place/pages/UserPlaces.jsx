@@ -24,7 +24,7 @@ const UserPlaces = () => {
 
         let img;
         if (responseData.userImg) {
-          img = import.meta.env.VITE_APP_ASSET_URL + `/${responseData.userImg}`;
+          img =  `${responseData.userImg}`;
         } else {
           img = defaultImg;
         }

@@ -24,7 +24,7 @@ const ProfileHeader = () => {
       setUser(responseData);
       if (responseData.image) {
         setUserImg(
-          import.meta.env.VITE_APP_ASSET_URL + `/${responseData.image}`
+           `${responseData.image}`
         );
       } else {
         setUserImg(defaultImg);
