@@ -27,7 +27,10 @@ const UserProfileImgUplaod = (props) => {
           Authorization: "Bearer " + auth.token,
         }
       );
-    } catch (err) {}
+
+    } catch(err) {
+         console.log(err);
+    }
 
     auth.login(
       responseData.userId,
@@ -70,7 +73,7 @@ const UserProfileImgUplaod = (props) => {
         profile={true}
         defaultImg={
           props.img
-            ? import.meta.env.VITE_APP_ASSET_URL + `/${props.img}`
+            ?  `${props.img}`
             : defaultImg
         }
         saveImg={profileImgSubmitHandler}

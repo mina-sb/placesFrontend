@@ -47,7 +47,9 @@ const NewPlace = () => {
       formData.append("description", formState.inputs.description.value);
       formData.append("address", formState.inputs.address.value);
       formData.append("image", formState.inputs.image.value);
-      await sendRequest(
+
+      
+      const t = await sendRequest(
         import.meta.env.VITE_APP_BACKEND_URL + "/places",
         "POST",
         formData,
@@ -55,8 +57,11 @@ const NewPlace = () => {
           Authorization: "Bearer " + auth.token,
         }
       );
+      console.log(t)
       navigate("/");
-    } catch (err) {}
+    } catch(err) {
+      console.log(err)
+    }
   };
 
   return (
