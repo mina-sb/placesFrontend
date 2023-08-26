@@ -7,11 +7,11 @@
 }
 
 .profile_data {
-  width: 5rem;
+  width: 7rem;
   position: absolute;
   top: 30%;
   left: 50%;
-  margin-left: -2.5rem;
+  margin-left: -3.5rem;
   text-align: center;
 }
 .profileImg {
@@ -23,7 +23,7 @@
   border: 3px solid var(--second-color);
 }
 h3 {
-  font-size: 0.7em;
+  font-size: 1em;
 }
 @media (min-width: 500px) {
   .profile_data {

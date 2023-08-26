@@ -38,7 +38,7 @@ const Places = () => {
       )}
       {!isLoading && loadedPlaces && (
         <div className={styles.places}>
-          <h2 className={styles.places_h2}>Places</h2>
+          <h2 id="places" className={styles.places_h2}>Places</h2>
           <PlaceList
             items={loadedPlaces}
             onDeletePlace={placeDeletedHandler}

@@ -87,10 +87,7 @@ const PlaceItem = (props) => {
         <Card className="place-item__content">
           {isLoading && <LoadingSpinner asOverlay />}
           <div className="place-item__image">
-            <img
-              src={`${props.image}`}
-              alt={props.title}
-            />
+            <img src={`${props.image}`} alt={props.title} />
           </div>
           <div className="place-item__info">
             <div className="user-info">
@@ -108,6 +105,7 @@ const PlaceItem = (props) => {
                 </Link>
               </div>
               <i class="bx bx-dots-horizontal-rounded menu"></i>
+             
             </div>
             <h2 className="place-item__info_h2">{props.title}</h2>
             <p>{props.description}</p>

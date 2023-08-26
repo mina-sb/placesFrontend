@@ -59,8 +59,8 @@ const UserSetting = () => {
                   <UserProfileImgUplaod img={userImg} />
                 </div>
                 <span className={styles.img_info}>
-                  Profile Settings Page Ui design Profile Settings Page Ui
-                  design Profile Settings Page Ui design Profile
+                  Accepted formats include PNG and JPG. Pick the perfect picture
+                  to define your profile.
                 </span>
               </div>
             </Card>

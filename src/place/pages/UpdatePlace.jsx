@@ -116,6 +116,7 @@ const UpdatePlace = () => {
             id="description"
             type="textarea"
             placeholder="Description"
+            rows="6"
             validators={["REQUIRED", "MIN(5)"]}
             errorText="Please enter a valid description (min. 5 characters)."
             onInput={inputHandler}
